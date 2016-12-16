@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Partially based on code from "hint.css" @ http://kushagragour.in/lab/hint. -->
+<!-- The last key pressed remains highlighted. "RESET ALL" unhighlights all keys. -->
+<!-- The background around the keys is transparent. -->
+<!-- Border changes between 'steelblue' & 'lightblue' infinitly. This can be turned off.-->
+<!-- This HTML file was last validated through https://validator.w3.org on 12/15/16. -->
+<head>
+   <meta charset="UTF-8">
+   <title>Keypad</title>
+
+   <!-- Linked CSS files -->
+   <link rel="stylesheet" href="hint.css">
+
+   <!-- Linked JS files -->
+   <script type="text/javascript" src="jQuery_v2.2.4.js"></script>
+
+   <script type="text/javascript">
+      $(document).ready(function() {
+         $(".btnSelect").on("click", function() {
+            // Reset all buttons in this class back to default size and color.
+            resetBtns();
+
+            // Change the clicked-on button to a larger size, & different color.
+            $(this).css("transform", "scale(1.2)").css("-moz-transform", "scale(1.2)").css("-webkit-transform", "scale(1.2)");
+            $(this).css("background", "linear-gradient(0deg, #0CCF1D 0%, #0CCF1D 1%, #E2FFDE 25%, #54FF52 50%, #E2FFDE 75%, #0CCF1D 100%)");
+         });
+
+         // FUNCTION: Reset all buttons in this class back to default size and color.
+         $("#btnReset").on("click", function() {
+            resetBtns();
+         });
+
+         function resetBtns () {
+            // Reset all buttons in this class back to default size and color.
+            $(".btnSelect").not(this).each(function() {
+               $(".btnSelect").css("transform", "scale(1)").css("-moz-transform", "scale(1)").css("-webkit-transform", "scale(1)");
+               $(".btnSelect").css("background", "linear-gradient(0deg, #A1C0FF 0%, #BAE1FF 25%, #A1C0FF 53%, #bae1ff 75%, #A1C0FF 100%)");
+            });
+         }
+      }); // End of ready
+   </script>
+
+   <style type="text/css">
+      body {
+         background-color: orange;
+      }
+      /* IDs */
+      #btnReset {
+         font-size: 10px;
+         white-space: pre-line;
+         background: linear-gradient(0deg, #A1C0FF 0%, #BAE1FF 25%, #A1C0FF 53%, #bae1ff 75%, #A1C0FF 100%);
+      }
+      #keypad-container {
+         border-width: 5px;
+         border-style: ridge;
+         border-color: lightblue;
+         min-height: 140px;
+         max-height: 140px;
+         min-width: 182px;
+         max-width: 182px;
+         margin: auto;
+         -webkit-animation: keypadBorder 5s infinite; /* Chrome, Safari, Opera */
+         animation: keypadBorder 5s infinite;
+      }
+      /* Chrome, Safari, Opera */
+         @-webkit-keyframes keypadBorder {
+         50% {border-color: steelblue;}
+      }
+      /* Other Browsers */
+         @keyframes keypadBorder {
+         50% {border-color: steelblue;}
+      }
+      /* Classes */
+      .btnSelect {
+         /*background: rgba(0,0,0,0.2);*/
+         background: white;
+         padding: 0px;
+         vertical-align: middle;
+         display: inline-block;
+         border-radius: 8px;
+         transition: 0.3s ease;
+         height: 40px;
+         width: 40px;
+         text-align: center;
+         font-size: 16px;
+         font-weight: bold;
+         background: linear-gradient(0deg, #A1C0FF 0%, #BAE1FF 25%, #A1C0FF 53%, #bae1ff 75%, #A1C0FF 100%);
+      }
+      p.keypad {
+         padding: 0px;
+         margin: 5px;
+      }
+   </style>
+
+</head>
+<body>
+   <div id="wrapper">
+      <!-- Dynamic generated HTML goes here. -->
+
+      <!--Start Keypad Section-->
+      <div id="keypad-container">
+         <p class="keypad">
+            <input type="button" class="btnSelect" id="1" value="1">
+            <input type="button" class="btnSelect" id="2" value="2">
+            <input type="button" class="btnSelect" id="3" value="3">
+            <input type="button" class="btnSelect" id="4" value="4">
+         </p>
+         <p class="keypad">
+            <input type="button" class="btnSelect" id="5" value="5">
+            <input type="button" class="btnSelect" id="6" value="6">
+            <input type="button" class="btnSelect" id="7" value="7">
+            <input type="button" class="btnSelect" id="8" value="8">
+         </p>
+         <p class="keypad">
+            <input type="button" class="btnSelect" id="Asterisk" value="*">
+            <input type="button" class="btnSelect" id="9" value="9">
+            <input type="button" class="btnSelect" id="0" value="0">
+            <span class="hint--right hint--rounded  hint--bounce" aria-label="Deselect All">
+               <input type="button" class="btnSelect" id="btnReset" value="RESET ALL">
+            </span>
+         </p>
+      </div>
+      <!--End Keypad Section-->
+
+   </div>
+</body>
+</html>
