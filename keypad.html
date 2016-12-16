@@ -24,13 +24,16 @@
             // Change the clicked-on button to a larger size, & different color.
             $(this).css("transform", "scale(1.2)").css("-moz-transform", "scale(1.2)").css("-webkit-transform", "scale(1.2)");
             $(this).css("background", "linear-gradient(0deg, #0CCF1D 0%, #0CCF1D 1%, #E2FFDE 25%, #54FF52 50%, #E2FFDE 75%, #0CCF1D 100%)");
+
+            // Call your functions below here:
+
          });
 
-         // FUNCTION: Reset all buttons in this class back to default size and color.
          $("#btnReset").on("click", function() {
             resetBtns();
          });
 
+         // FUNCTION: Reset all buttons in this class back to default size and color.
          function resetBtns () {
             // Reset all buttons in this class back to default size and color.
             $(".btnSelect").not(this).each(function() {
@@ -38,6 +41,9 @@
                $(".btnSelect").css("background", "linear-gradient(0deg, #A1C0FF 0%, #BAE1FF 25%, #A1C0FF 53%, #bae1ff 75%, #A1C0FF 100%)");
             });
          }
+
+         // Put your functions below here:
+
       }); // End of ready
    </script>
 
